@@ -5,7 +5,9 @@ import express from "express";
 // Use Temporal.PlainDate instead. See /test/date_conversion.spec.mjs for examples.
 
 function convert(date) {
-  if (date) {}
+  if (date) {
+    return date.toTemporalInstant().toZonedDateTimeISO('UTC').toPlainDate();
+  }
 }
 
 function createApp(database) {
@@ -80,7 +82,7 @@ function createApp(database) {
   }
 
   function isMonday(date) {
-    return date.getUTCDay() === 1;
+    return convert(date).dayOfWeek === 1;
   }
 
   function isHoliday(date) {
