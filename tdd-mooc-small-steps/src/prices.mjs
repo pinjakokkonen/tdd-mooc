@@ -4,14 +4,6 @@ import express from "express";
 // Refactor the following code to get rid of the legacy Date class.
 // Use Temporal.PlainDate instead. See /test/date_conversion.spec.mjs for examples.
 
-function convert(date) {
-  if (date instanceof Date) {
-    return date.toTemporalInstant().toZonedDateTimeISO('UTC').toPlainDate();
-  } else {
-    return date
-  }
-}
-
 function createApp(database) {
   const app = express();
 
@@ -26,7 +18,7 @@ function createApp(database) {
     const age = req.query.age ? parseInt(req.query.age) : undefined;
     const type = req.query.type;
     const baseCost = database.findBasePriceByType(type).cost;
-    const date = convert(parseDate(req.query.date));
+    const date = parseDate(req.query.date);
     const cost = calculateCost(age, type, date, baseCost);
     res.json({ cost });
   });
