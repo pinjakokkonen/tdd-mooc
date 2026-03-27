@@ -84,6 +84,8 @@ function createApp(database) {
   }
 
   function calculateReduction2(date) {
+    let reduction = 0;
+    return reduction;
   }
 
   function isMonday(date) {
