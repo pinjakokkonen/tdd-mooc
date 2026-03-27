@@ -59,7 +59,7 @@ function createApp(database) {
 
   function calculateCostForDayTicket(age, date, baseCost, date2) {
     let reduction = calculateReduction(date, date2);
-    let reduction2 = calculateReduction2(date2);
+  
     if (age === undefined) {
       return Math.ceil(baseCost * (1 - reduction / 100));
     }
@@ -83,20 +83,8 @@ function createApp(database) {
     return reduction;
   }
 
-  function calculateReduction2(date) {
-    let reduction = 0;
-    if (date && isMonday2(date)) {
-      reduction = 35;
-    }
-    return reduction;
-  }
-
   function isMonday(date, date2) {
     return date.getUTCDay() === 1 && date2.dayOfWeek === 1;
-  }
-
-  function isMonday2(date) {
-    return date.dayOfWeek === 1;
   }
 
   function isHoliday(date) {
