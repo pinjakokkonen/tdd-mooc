@@ -32,6 +32,7 @@ function createApp(database) {
 
   function parsePlainDate(dateString) {
     if (dateString) {
+      return Temporal.PlainDate.from(dateString);
     }
   }
 
