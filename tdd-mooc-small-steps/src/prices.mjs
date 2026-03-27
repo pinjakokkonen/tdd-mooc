@@ -85,6 +85,9 @@ function createApp(database) {
 
   function calculateReduction2(date) {
     let reduction = 0;
+    if (date) {
+      reduction = 35;
+    }
     return reduction;
   }
 
