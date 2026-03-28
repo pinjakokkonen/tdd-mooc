@@ -4,11 +4,14 @@ export class Board {
   block;
   blockRow;
   blockColumn;
+  grid;
+  falling=false;
 
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
+    this.grid = Array.from({ length: height }, () => Array.from({ length: width }, () => '.'));
   }
 
   drop(block) {
@@ -18,14 +21,17 @@ export class Board {
     this.block = block;
     this.blockRow = 1;
     this.blockColumn = 2;
+    this.falling = true;
   }
 
   tick() {
-    this.blockRow += 1;
+    if (this.blockRow<this.height) {
+      this.blockRow += 1;
+    } else {this.falling = false;}
   }
 
   hasFalling() {
-    return true;
+    return this.falling;
   }
 
   toString() {
@@ -35,7 +41,7 @@ export class Board {
         if (row===this.blockRow && column===2 && this.block) {
           string += this.block;
         } else {
-          string += '.';
+          string += this.grid[row-1][column-1];
         }
       }
       string += '\n';
