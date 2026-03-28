@@ -24,6 +24,10 @@ export class Board {
     this.blockRow += 1;
   }
 
+  hasFalling() {
+    return true;
+  }
+
   toString() {
     let string = '';
     for (let row=1; this.height>=row; row++) {
