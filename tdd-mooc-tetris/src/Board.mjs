@@ -25,7 +25,7 @@ export class Board {
   }
 
   tick() {
-    if (this.blockRow<this.height) {
+    if (this.blockRow<this.height && this.grid[this.blockRow][this.blockColumn-1]==='.') {
       this.blockRow += 1;
     } else {
       this.falling = false;
