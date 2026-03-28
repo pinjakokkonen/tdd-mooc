@@ -11,6 +11,10 @@ export class Tetromino {
     this._grid = RotatingShape.fromString(grid);
   }
 
+  rotateRight() {
+    return this._grid.rotateRight();
+  }
+
   toString() {
     return this._grid.toString();
   }
