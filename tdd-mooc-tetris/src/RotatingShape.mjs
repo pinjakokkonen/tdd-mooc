@@ -22,11 +22,13 @@ export class RotatingShape {
   }
 
   rotateLeft() {
-    let newGrid = new Array(this.grid.length);
-    for (let row=0; row<this.grid.length; row++) {
-        newGrid[row] = new Array(this.grid[0].length);
-      for (let column=0; column<this.grid[0].length; column++) { 
-        newGrid[row][column] = this.grid[column][this.grid.length-row-1]; 
+    const height = this.grid.length;
+    const width = this.grid[0].length;
+    let newGrid = new Array(height);
+    for (let row=0; row<height; row++) {
+        newGrid[row] = new Array(width);
+      for (let column=0; column<width; column++) { 
+        newGrid[row][column] = this.grid[column][height-row-1]; 
       }
     }
     return new RotatingShape(newGrid);
