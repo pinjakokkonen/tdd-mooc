@@ -9,11 +9,13 @@ export class RotatingShape {
   }
 
   rotateRight() {
-    let newGrid = new Array(this.grid.length);
-    for (let row=0; row<this.grid.length; row++) {
-        newGrid[row] = new Array(this.grid[0].length);
-      for (let column=0; column<this.grid[0].length; column++) {
-        newGrid[row][column] = this.grid[this.grid[0].length-column-1][row];
+    const height = this.grid.length;
+    const width = this.grid[0].length;
+    let newGrid = new Array(height);
+    for (let row=0; row<height; row++) {
+        newGrid[row] = new Array(width);
+      for (let column=0; column<width; column++) {
+        newGrid[row][column] = this.grid[width-column-1][row];
       }
     }
     return new RotatingShape(newGrid);
