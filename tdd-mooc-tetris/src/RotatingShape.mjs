@@ -22,16 +22,7 @@ export class RotatingShape {
   }
 
   rotateLeft() {
-    const height = this.grid.length;
-    const width = this.grid[0].length;
-    let newGrid = new Array(height);
-    for (let row=0; row<height; row++) {
-        newGrid[row] = new Array(width);
-      for (let column=0; column<width; column++) { 
-        newGrid[row][column] = this.grid[column][height-row-1]; 
-      }
-    }
-    return new RotatingShape(newGrid);
+    return this.rotateRight().rotateRight().rotateRight();
   }
 
   toString() {
