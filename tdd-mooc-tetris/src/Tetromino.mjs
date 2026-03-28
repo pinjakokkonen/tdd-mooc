@@ -15,6 +15,10 @@ export class Tetromino {
     return this._grid.rotateRight();
   }
 
+  rotateLeft() {
+    return this._grid.rotateLeft();
+  }
+
   toString() {
     return this._grid.toString();
   }
