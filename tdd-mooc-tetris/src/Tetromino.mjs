@@ -15,6 +15,12 @@ export class Tetromino {
     .....
     `);
 
+  static O_SHAPE = Tetromino.fromString(0, 1, `
+    .OO
+    .OO
+    ...
+    `);
+
   constructor(currentOrientation, orientations) {
     this.orientations = orientations;
     this.currentOrientation = (currentOrientation + orientations.length) % orientations.length; 
