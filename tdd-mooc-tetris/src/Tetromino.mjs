@@ -22,7 +22,11 @@ export class Tetromino {
 
   static fromString(currentOrientation, differentOrientations, initialGrid) {
     const grid = RotatingShape.fromString(initialGrid);
-    const orientations = [grid, grid.rotateRight(), grid.rotateRight().rotateRight(), grid.rotateRight().rotateRight().rotateRight()].slice(0, differentOrientations);
+    const orientations = [
+        grid, 
+        grid.rotateRight(), 
+        grid.rotateRight().rotateRight(), 
+        grid.rotateRight().rotateRight().rotateRight()].slice(0, differentOrientations);
     return new Tetromino(currentOrientation, orientations);
   }
 
