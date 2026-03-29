@@ -17,6 +17,7 @@ export class Tetromino {
 
   constructor(currentOrientation, orientations) {
     this.orientations = orientations;
+    this.currentOrientation = (currentOrientation + orientations.length) % orientations.length; 
   }
 
   static fromString(currentOrientation, differentOrientations, initialGrid) {
@@ -26,14 +27,14 @@ export class Tetromino {
   }
 
   rotateRight() {
-    return this._grid.rotateRight();
+    return new Tetromino(this.currentOrientation+1, this.orientations);
   }
 
   rotateLeft() {
-    return this._grid.rotateLeft();
+    return new Tetromino(this.currentOrientation-1, this.orientations); 
   }
 
   toString() {
-    return this._grid.toString();
+    return this.orientations[this.currentOrientation].toString(); 
   }
 }
