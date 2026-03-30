@@ -2,8 +2,6 @@ export class Board {
   width;
   height;
   block = null;
-  blockRow;
-  blockColumn;
   grid;
 
 
@@ -21,6 +19,15 @@ export class Board {
       const shape = block.orientations[block.currentOrientation];
       const grid = shape.grid;
       const column = Math.floor((this.width - grid[0].length) / 2);
+      const row = 0;
+      this.block = { block, row, column, shape };
+      for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < grid[0].length; c++) {
+          if (grid[r][c] !== "." && 0 + r >= 0 && 0 + r < this.height && column + c >= 0 && column + c < this.width) {
+            this.grid[0 + r][column + c] = grid[r][c];
+          }
+        }
+      }
     } else {
     this.block = block;
     this.blockRow = 0;
