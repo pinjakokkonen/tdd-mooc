@@ -17,9 +17,15 @@ export class Board {
     if (this.block) {
       throw new Error("already falling");
     }
+    if (this.isTetromino(block)){
+      const shape = block.orientations[block.currentOrientation];
+      const grid = shape.grid;
+      const column = Math.floor((this.width - grid[0].length) / 2);
+    } else {
     this.block = block;
     this.blockRow = 0;
     this.blockColumn = Math.floor((this.width-this.block.length)/2);
+    }
   }
 
   tick() {
@@ -33,6 +39,10 @@ export class Board {
 
   hasFalling() {
     return this.block !== null;
+  }
+
+  isTetromino(value) {
+    return value && typeof value.currentOrientation === "number" && Array.isArray(value.orientations) && value.orientations[value.currentOrientation] && Array.isArray(value.orientations[value.currentOrientation].grid);
   }
 
   toString() {
