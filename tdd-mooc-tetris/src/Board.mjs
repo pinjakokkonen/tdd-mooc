@@ -19,14 +19,14 @@ export class Board {
     }
     this.block = block;
     this.blockRow = 0;
-    this.blockColumn = 2;
+    this.blockColumn = Math.floor((this.width-this.block.length)/2);
   }
 
   tick() {
-    if (this.blockRow<this.height-1 && this.grid[this.blockRow+1][this.blockColumn-1]==='.') {
+    if (this.blockRow<this.height-1 && this.grid[this.blockRow+1][this.blockColumn]==='.') {
       this.blockRow += 1;
     } else {
-      this.grid[this.blockRow][this.blockColumn-1] = this.block;
+      this.grid[this.blockRow][this.blockColumn] = this.block;
       this.block = null;
     }
   }
@@ -38,11 +38,11 @@ export class Board {
   toString() {
     let string = '';
     for (let row=0; this.height>row; row++) {
-      for (let column=1; this.width>=column; column++) {
-        if (row===this.blockRow && column===2 && this.block) {
+      for (let column=0; this.width>column; column++) {
+        if (row===this.blockRow && column===this.blockColumn && this.block) {
           string += this.block;
         } else {
-          string += this.grid[row][column-1];
+          string += this.grid[row][column];
         }
       }
       string += '\n';
