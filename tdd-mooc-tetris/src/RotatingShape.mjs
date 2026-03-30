@@ -4,8 +4,13 @@ export class RotatingShape {
   }
 
   static fromString(string) {
-    const grid = string.replaceAll(' ', '').trim().split('\n').map((row) => row.split(''));
-    return new RotatingShape(grid);
+    if (typeof string === "string") {
+      const grid = string.replaceAll(' ', '').trim().split('\n').map((row) => row.split(''));
+      return new RotatingShape(grid);
+    } else {
+      const grid = string;
+      return new RotatingShape(grid);
+    }
   }
 
   rotateRight() {
